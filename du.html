@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <style>
+        .stranka {
+            width: 57%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+        }
+
+        .menu {
+            color: blue;
+            list-style-type: none;
+        }
+
+        .line {
+            border-bottom: 0.1px solid black;
+            width: 95%;
+
+        }
+
+        .col-sm {
+            margin: 10px;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Testovací aplikacia</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        const dataJSON = [{
+  "itemId": "557452",
+  "itemName": "Televize Samsung QE43Q67TA stříbrná",
+  "itemUrl": "https://www.datart.cz/televize-samsung-qe43q67ta-cerna.html",
+  "img": "https://static.datart.cz/televize-samsung-qe43q67ta-cerna/media_4130518.jpg?size=500",
+  "currentPrice": 14990,
+  "originalPrice": 19990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "562041",
+  "itemName": "Televize LG OLED65CX stříbrná",
+  "itemUrl": "https://www.datart.cz/televize-lg-oled65cx-stribrna.html",
+  "img": "https://static.datart.cz/televize-lg-oled65cx-stribrna/media_4209385.jpg?size=500",
+  "currentPrice": 54990,
+  "originalPrice": 69990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "570354",
+  "itemName": "Televize LG OLED55BX černá",
+  "itemUrl": "https://www.datart.cz/televize-lg-oled55bx-cerna.html",
+  "img": "https://static.datart.cz/televize-lg-oled55bx-cerna/media_4340283.jpg?size=500",
+  "currentPrice": 26990,
+  "originalPrice": 34990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "557446",
+  "itemName": "Televize Samsung QE55Q77TA stříbrná",
+  "itemUrl": "https://www.datart.cz/televize-samsung-qe55q77ta-stribrna.html",
+  "img": "https://static.datart.cz/televize-samsung-qe55q77ta-stribrna/media_4130506.jpg?size=500",
+  "currentPrice": 19990,
+  "originalPrice": 34990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "562039",
+  "itemName": "Televize LG OLED55GX černá/stříbrná",
+  "itemUrl": "https://www.datart.cz/televize-lg-oled55gx-cerna-stribrna.html",
+  "img": "https://static.datart.cz/televize-lg-oled55gx-cerna-stribrna/media_4209381.jpg?size=500",
+  "currentPrice": 54990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "557448",
+  "itemName": "Televize Samsung QE75Q67TA stříbrná",
+  "itemUrl": "https://www.datart.cz/televize-samsung-qe75q67ta-cerna.html",
+  "img": "https://static.datart.cz/televize-samsung-qe75q67ta-cerna/media_4130510.jpg?size=500",
+  "currentPrice": 39990,
+  "originalPrice": 59990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "562042",
+  "itemName": "Televize LG OLED55CX stříbrná",
+  "itemUrl": "https://www.datart.cz/televize-lg-oled55cx-stribrna.html",
+  "img": "https://static.datart.cz/televize-lg-oled55cx-stribrna/media_4209387.jpg?size=500",
+  "currentPrice": 34990,
+  "originalPrice": 46990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "557983",
+  "itemName": "Televize Panasonic TX-55HZ2000E černá",
+  "itemUrl": "https://www.datart.cz/televize-panasonic-tx-55hz2000e-cerna.html",
+  "img": "https://static.datart.cz/televize-panasonic-tx-55hz2000e-cerna/media_4148813.jpg?size=500",
+  "currentPrice": 71990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "557445",
+  "itemName": "Televize Samsung QE65Q77TA stříbrná",
+  "itemUrl": "https://www.datart.cz/televize-samsung-qe65q77ta-stribrna.html",
+  "img": "https://static.datart.cz/televize-samsung-qe65q77ta-stribrna/media_4130504.jpg?size=500",
+  "currentPrice": 29990,
+  "originalPrice": 49990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "557462",
+  "itemName": "Televize Samsung UE55TU8502 černá",
+  "itemUrl": "https://www.datart.cz/televize-samsung-ue55tu8502-cerna.html",
+  "img": "https://static.datart.cz/televize-samsung-ue55tu8502-cerna/media_4130538.jpg?size=500",
+  "currentPrice": 16990,
+  "originalPrice": 19990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "557989",
+  "itemName": "Televize Panasonic TX-55HZ980E černá",
+  "itemUrl": "https://www.datart.cz/televize-panasonic-tx-55hz980e-cerna.html",
+  "img": "https://static.datart.cz/televize-panasonic-tx-55hz980e-cerna/media_4234887.jpg?size=500",
+  "currentPrice": 29990,
+  "originalPrice": 39990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "561720",
+  "itemName": "Televize Sony KD-65A8B černá",
+  "itemUrl": "https://www.datart.cz/televize-sony-kd-65a8b-cerna.html",
+  "img": "https://static.datart.cz/televize-sony-kd-65a8b-cerna/media_4321336.jpg?size=500",
+  "currentPrice": 62990,
+  "originalPrice": 87999,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "557463",
+  "itemName": "Televize Samsung UE50TU8502 černá",
+  "itemUrl": "https://www.datart.cz/televize-samsung-ue50tu8502-cerna.html",
+  "img": "https://static.datart.cz/televize-samsung-ue50tu8502-cerna/media_4130540.jpg?size=500",
+  "currentPrice": 14990,
+  "originalPrice": 17990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "540646",
+  "itemName": "Televize Sony KD-55AG9 černá",
+  "itemUrl": "https://www.datart.cz/televize-sony-kd-55ag9-cerna.html",
+  "img": "https://static.datart.cz/televize-sony-kd-55ag9-cerna/media_3803639.jpg?size=500",
+  "currentPrice": 54990,
+  "originalPrice": 74999,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "557461",
+  "itemName": "Televize Samsung UE65TU8502 černá",
+  "itemUrl": "https://www.datart.cz/televize-samsung-ue65tu8502-cerna.html",
+  "img": "https://static.datart.cz/televize-samsung-ue65tu8502-cerna/media_4130536.jpg?size=500",
+  "currentPrice": 22990,
+  "originalPrice": 29990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "557464",
+  "itemName": "Televize Samsung UE43TU8502 černá",
+  "itemUrl": "https://www.datart.cz/televize-samsung-ue43tu8502-cerna.html",
+  "img": "https://static.datart.cz/televize-samsung-ue43tu8502-cerna/media_4130542.jpg?size=500",
+  "currentPrice": 12890,
+  "originalPrice": 14990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Televize"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "540686",
+  "itemName": "Blu-ray přehrávač Panasonic DP-UB150EG-K černý",
+  "itemUrl": "https://www.datart.cz/blu-ray-prehravac-panasonic-dp-ub150eg-k-cerny.html",
+  "img": "https://static.datart.cz/blu-ray-prehravac-panasonic-dp-ub150eg-k-cerny/media_3798362.jpg?size=500",
+  "currentPrice": 3990,
+  "originalPrice": 4319,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Audio a video přehrávače"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "533266",
+  "itemName": "DVD přehrávač GoGEN PDX 1043 SU DVBT2 černý",
+  "itemUrl": "https://www.datart.cz/dvd-prehravac-gogen-pdx-1043-su-dvbt2-cerny.html",
+  "img": "https://static.datart.cz/dvd-prehravac-gogen-pdx-1043-su-dvbt2-cerny/media_3746875.jpg?size=500",
+  "currentPrice": 3599,
+  "originalPrice": 4990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Audio a video přehrávače"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "369601",
+  "itemName": "DVD přehrávač LG DP542H černý",
+  "itemUrl": "https://www.datart.cz/DVD-prehravac-LG-DP542H.html",
+  "img": "https://static.datart.cz/DVD-prehravac-LG-DP542H/media_1734421.jpg?size=500",
+  "currentPrice": 1190,
+  "originalPrice": 1290,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Audio a video přehrávače"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "309805",
+  "itemName": "DVD přehrávač Sony DVP-SR760H černý",
+  "itemUrl": "https://www.datart.cz/DVD-prehravac-SONY-DVP-SR760HB.html",
+  "img": "https://static.datart.cz/DVD-prehravac-SONY-DVP-SR760HB/media_3323908.jpg?size=500",
+  "currentPrice": 999,
+  "originalPrice": 1499,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Audio a video přehrávače"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "474511",
+  "itemName": "Blu-ray přehrávač Sony UBP-X700 černý (UBPX700B.EC1)",
+  "itemUrl": "https://www.datart.cz/Sony-UBP-X700.html",
+  "img": "https://static.datart.cz/Sony-UBP-X700/media_3543476.jpg?size=500",
+  "currentPrice": 5990,
+  "originalPrice": 7199,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Audio a video přehrávače"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "451306",
+  "itemName": "DVD přehrávač GoGEN PDX 923 SU DVB-T2 (H.265) černý",
+  "itemUrl": "https://www.datart.cz/GoGEN-PDX923SUDVBT2.html",
+  "img": "https://static.datart.cz/GoGEN-PDX923SUDVBT2/media_3594167.jpg?size=500",
+  "currentPrice": 2999,
+  "originalPrice": 3990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Audio a video přehrávače"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "426793",
+  "itemName": "DVD přehrávač Hyundai DV-2-H 478 DU černý",
+  "itemUrl": "https://www.datart.cz/DVD-prehravac-HYUNDAI-DV2H-478-DU.html",
+  "img": "https://static.datart.cz/DVD-prehravac-HYUNDAI-DV2H-478-DU/media_4088753.jpg?size=500",
+  "currentPrice": 899,
+  "originalPrice": 1290,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Audio a video přehrávače"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "532906",
+  "itemName": "Televize Sencor SPV 7012T černá (35050784)",
+  "itemUrl": "https://www.datart.cz/televize-sencor-spv-7012t-cerna.html",
+  "img": "https://static.datart.cz/televize-sencor-spv-7012t-cerna/media_3738893.jpg?size=500",
+  "currentPrice": 2490,
+  "originalPrice": 3490,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Audio a video přehrávače"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "539030",
+  "itemName": "Blu-ray přehrávač Sony UBP-X800M2 černý",
+  "itemUrl": "https://www.datart.cz/-3d-blu-ray-prehravac-sony-ubp-x800m2-cerny.html",
+  "img": "https://static.datart.cz/-3d-blu-ray-prehravac-sony-ubp-x800m2-cerny/media_3794254.jpg?size=500",
+  "currentPrice": 7499,
+  "originalPrice": 8599,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Audio a video přehrávače"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "356940",
+  "itemName": "DVD přehrávač Hyundai PDP 911 U černý",
+  "itemUrl": "https://www.datart.cz/Prenosny-DVD-prehravac-HYUNDAI-DVD-prehravac-Hyundai-PDP-911-U-prenosny.html",
+  "img": "https://static.datart.cz/Prenosny-DVD-prehravac-HYUNDAI-DVD-prehravac-Hyundai-PDP-911-U-prenosny/media_4088761.jpg?size=500",
+  "currentPrice": 2299,
+  "originalPrice": 2990,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Audio a video přehrávače"
+  ],
+  "discounted": false
+},
+{
+  "itemId": "555197",
+  "itemName": "DVD přehrávač Philips TAEP200 černý",
+  "itemUrl": "https://www.datart.cz/dvd-prehravac-philips-taep200-cerny.html",
+  "img": "https://static.datart.cz/dvd-prehravac-philips-taep200-cerny/media_4091756.jpg?size=500",
+  "currentPrice": 999,
+  "originalPrice": 1190,
+  "currency": "CZK",
+  "category": [
+    "Datart.cz",
+    "Produkty",
+    "Televize, Audio, Video",
+    "Audio a video přehrávače"
+  ],
+  "discounted": false
+}];
+
+        function filtrujMensiNez20000() {
+            const tempData = [];
+            dataJSON.forEach(element => {
+                if (element.currentPrice > 60000) {
+                    tempData.push(element);
+                }
+            });
+        }
+        function printData(data) {
+            const card = $('#hidden-card').html();
+            tempData.forEach(element => {
+                const parsedHtml = card.replace('{{img}}', element.img)
+                    .replace('{{name}}', element.itemName)
+                    .replace('{{name}}', element.itemName);
+                $('#content-div').append(parsedHtml)
+            });
+        }       
+        $(document).ready(function(){
+            const tempData = [];
+            dataJSON.forEach(element => {
+                if (element.currentPrice > 60000) {
+                    tempData.push(element);
+                }
+            });
+
+            // TODO: ukazat priklad s navesenim onClick handleru
+            $( "#prvni-but" ).click(function() {
+                alert( "Handler for .click() called." );
+            });
+
+            $( "#test-but" ).on( "click", function() {
+                console.log( $( this ).text() );
+            });
+        });
+    </script>
+    
+</head>
+
+<body style="background-color:#321057;">
+    <div id="hidden-card" class="card col-sm-4" style="display: none;">
+        <img src="{{img}}" class="card-img-top" alt="{{name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{name}}</h5>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="stranka">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <ul class="menu">
+                        <li><button id="prvni-but" >Zobraz produkty < 20 000</button></li>
+                        <li><button id="druhej-but" >Zobraz produkty < 50 000 && produkty > 38 000</button></li>
+                        <li><button id="treti-but" >Zobraz produkty > 50 000</button></li>
+                    </ul>
+                </div>
+                <div class="col-sm-8" id="content-div">
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+</html>
